@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>{% block title %}{% endblock %}</title>
+	{% load static %}
+    <link type="text/css" href="{% static 'boxes/css/base_styles.css' %}" rel="stylesheet"/>
+	{% block meta_includes %}
+	{% endblock %}
+</head>
+<body>
+	<header>
+		<div id='links'>
+			<a href="{{ main_page }}"><h3>Home</h3></a>
+			<a href="{{ room_page }}"><h3>Room</h3></a>
+			<a href="{{ boxes_page }}"><h3>Boxes</h3></a>
+		</div>
+		<div id='entrance'>
+			{% if is_auth %}
+					<p><h3>{{ user_name }}</h3></p><p>|</p><a href="{{ logout_page }}"><h3>LogOut</h3></a>
+			{% else %}
+					<a href="{{ login_page }}"><h3>LogIn</h3></a><p>|</p><a href="{{ signup_page }}"><h3>SignUp</h3></a>
+			{% endif %}
+		</div>
+	</header>
+	<content>
+	{% block content %}
+
+	{% endblock %}
+	</content>
+	<footer>
+		<div id='author_meta'>
+			<p><b>Работу выполнил:</b><br>
+				студент 4 курса ИМИТ ПетрГУ<br>
+			Меньщиков Михаил</p>	
+		</div>
+		
+	</footer>
+</body>
+</html>

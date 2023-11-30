@@ -1,0 +1,59 @@
+form {
+}
+
+.content {
+	height: 100%;
+	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+#login_form > div:first-child {
+	text-align: center;
+}
+
+#login_form {
+	background: #242321;
+	width: 350px;
+	height: 300px;
+
+}
+
+form {
+	height: 100%;
+	width: 100%;
+}
+
+#login_form > div:first-child {
+	margin-top: 5%;
+	text-align: center;
+}
+
+#input_fields {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin-left: 5%;
+	margin-right: 5%;
+}
+
+form > div:last-child {
+	margin-top: 10px;
+	display: flex;
+	justify-content: center;
+	align-content: center;
+}
+
+input {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+button {
+	width: 90%;
+	height: 25px;
+}
+

@@ -1,0 +1,38 @@
+{% extends 'boxes/base_tmp.html' %}
+
+{% block title %}{{ form_name }}{% endblock %}
+
+{% block meta_includes %}
+{% load static %}
+<link type="text/css" href="{% static 'boxes/css/formpage_styles.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+	<div id='login_form'>
+		<div>{{ form_name }}</div>
+		<div id='input_fields'>
+		<form method='post'>
+			{% csrf_token %}
+			<div>
+				<p>Name</p>
+				<input style="width: 97%" type="textfield" name="name" required>
+			</div>
+			<div>
+				<p>Password</p>
+				<input style="width: 97%" type="password" name="password" required>
+			</div>
+
+			<div>
+				<button type="submit" style="margin-top: 10%;">Submit</button>
+			</div>
+		</form>
+		{% if status %}
+			<div style="width: 100%; text-align: center; margin: auto;color: {%if status == 'suc' %} green {% else %} red {% endif %};">
+			<p>{{ msg }}</p>
+			</div>
+		{% endif %}
+		</div>
+	</div>
+</div>
+{% endblock %}

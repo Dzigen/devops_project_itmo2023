@@ -1,0 +1,74 @@
+{% extends 'boxes/base_tmp.html' %}
+
+
+{% block title %}Box Items{% endblock %}
+
+{% block meta_includes %}
+{% load static %}
+<link type="text/css" href="{% static 'boxes/css/itemspage_styles.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div id='iteml_content'>
+	<div id='cur_box_info'>
+		<div>Box Info</div>
+		<div id='box_cnt'>
+			<div>
+				<div style="background: {{box_info.color}}"></div>
+			</div>
+			<div>
+				<div>
+					<div>
+						Name: <b>{{box_info.name}}</b>
+					</div>
+					<div>
+						Color: <b>{{box_info.color}}</b>
+					</div>
+				</div>
+				<div>
+					Author: <b>{{box_info.author}}</b>	
+				</div>
+			</div>
+		</div>
+		<!-- {{ box_info }} --> 
+	</div>
+	<div id='items_list'>
+		<div>Items List</div>
+		<div id='list_content'>
+			{% for item in items_info %}
+				<div class='box_item'>
+					<div>
+						{{ item.name }}
+					</div>
+					<div>
+						Count:
+						<nobr><b>[ {{ item.total }} ]</b></nobr>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+	{% if is_author %}
+	<div id='add_item'>
+		<div>Add Item</div>
+		<div id='input_fields'>
+			<form method='post'>
+				{% csrf_token %}
+				<div>
+					<p>Name</p>
+					<input type="textfield" name="item_name" required>
+				</div>
+				<div>
+					<button type="submit">Submit</button>
+				</div>
+			</form>
+		</div>
+		<div style="width: 100%; text-align: center;">
+		{% if status %}
+			<p style="color: {%if status == 'suc' %} green {% else %} red {% endif %};">{{ msg }}</p>
+		{% endif %}
+		</div>
+	</div>
+	{% endif %}
+</div>
+{% endblock %}

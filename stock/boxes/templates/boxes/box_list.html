@@ -1,0 +1,64 @@
+{% extends 'boxes/base_tmp.html' %}
+
+{% block title %}Boxes{% endblock %}
+
+{% block meta_includes %}
+{% load static %}
+<link type="text/css" href="{% static 'boxes/css/boxespage_styles.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div id='boxl_content'>
+
+	<div id='box_list'>
+		<div id='b_title'><p>Box List</p></div>
+		<div id='b_cnt'>
+			{% for box in boxes_info %}
+			<a href="{{box.url}}" style="color: black;text-decoration: none;">
+				<div class='cur_box' style="background: {{box.color}}">
+						<div>
+							<b>{{ box.name }}</b>
+						</div>
+					<div style="color:black;  text-decoration: none;">
+						Author: <nobr><b>{{ box.author }}</b></nobr>
+					</div>
+				</div>
+			</a>
+			{% endfor %}
+		</div>
+	</div>
+	{% if is_auth %}
+	<div id='create_box'>
+		<div>Create Box</div>
+		<div id='input_fields'>
+			<form method='post'>
+				{% csrf_token %}
+				<div>
+					<p>Name</p>
+					<input type="textfield" name="name" required>
+				</div>
+				<div>
+					<p>Color</p>
+					<select name="color">
+						<option value="red">red</option>
+						<option value="green">green</option>
+						<option value="blue">blue</option>
+						<option value="yellow">yellow</option>
+						<option value="magenta">magenta</option>
+					</select>
+				</div>
+				<div>
+					<button type="submit">Submit</button>
+				</div>
+			</form>
+		</div>
+		<div style="width: 100%; text-align: center;">
+		{% if status %}
+			<p style="color: {%if status == 'suc' %} green {% else %} red {% endif %};">{{ msg }}</p>
+		{% endif %}
+		</div>
+	</div>
+	{% endif %}
+
+</div>
+{% endblock %}

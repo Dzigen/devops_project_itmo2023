@@ -1,0 +1,19 @@
+{% extends 'boxes/base_tmp.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block meta_includes %}
+{% load static %}
+<link type="text/css" href="{% static 'boxes/css/mainpage_styles.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block content %}
+<div id="info">
+    <div style="align-self: center;">
+    <p>Описание приложения можно найти по <a href="https://cs.petrsu.ru/~kulakov/courses/web-templates/2021/index.php">ссылке</a>: раздел "Задания. Часть 1".</p>
+    <p>Текущее количество созданных коробок: <b>{{ boxes_count }}</b>.</p>
+    </div>
+    <p style="align-self: center;"><a href="{{ boxes_page }}"><b>>> Перейти на страницу со списком коробок <<</b></a></p>
+</div>
+{% endblock %}
+
