@@ -28,7 +28,7 @@ services:
     volumes:
       - static:/home/app/static
     ports:
-      - 1337:80
+      - 8008:80
     depends_on:
       - app_devops
 
